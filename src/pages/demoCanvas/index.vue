@@ -1,18 +1,13 @@
 <script setup lang="ts">
-    import { ref } from 'vue'
+</script>
     
-    defineProps<{ msg: string }>()
-    
-    const count = ref(0)
-    </script>
-    
-    <template>
-        <div>test</div>
-    </template>
+<template>
+    <div>test</div>
+</template>
     
     
-    <style lang="scss" scoped>
-    .read-the-docs {
-      color: #888;
-    }
-    </style>
+<style lang="scss" scoped>
+.read-the-docs {
+    color: #888;
+}
+</style>
