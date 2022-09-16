@@ -5,6 +5,7 @@ const routes = [
   {
     path: '/test',
     component: test,
+    children: [],
     name: 'test',
     meta: {
       title: 'test',
@@ -28,11 +29,11 @@ const allRoutes: any = import.meta.glob('@/pages/demoCanvas/*/*.vue', {
 Object.keys(allRoutes).forEach((fileName) => {
   const name = fileName
     .replace(/\.\/|\.vue/g, '')
-    .replace('/src/pages', '')
+    .replace('/src/pages/', '')
     .replace('/index', '');
   utilFun[name] = allRoutes[fileName].default;
   const component = allRoutes[fileName].default;
-  routes.push({
+  routes[0].children.push({
     path: name,
     name: name,
     meta: {
@@ -41,4 +42,6 @@ Object.keys(allRoutes).forEach((fileName) => {
     component: component.default || component,
   });
 });
+console.log(routes);
+
 export default routes;

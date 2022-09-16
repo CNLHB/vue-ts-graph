@@ -40,7 +40,9 @@ function drawDF(ctx: CanvasRenderingContext2D) {
   };
 
   function clear() {
-    ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    // ctx.fillStyle = 'rgba(255,255,255,0.3)';
+    // 这里在不断加半透明蒙层，使上一帧的流星变淡
+    ctx.fillStyle = 'rgba(255,255,255,0.1)'
     ctx.fillRect(0, 0, canvas.width, canvas.height);
   }
 

@@ -6,7 +6,7 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-const count = ref(0)
+const selRoute = ref(0)
 
 onMounted(() => {
   const canvas: HTMLCanvasElement = document.getElementById('canvas1') as HTMLCanvasElement
@@ -16,11 +16,26 @@ const initCanvas = (canvas: HTMLCanvasElement) => {
   const ctx = canvas.getContext('2d')
   draw(ctx)
 }
+/**
+ * 
+ * @param ctx 
+ * 备注： 当你调用 fill() 函数时，所有没有闭合的形状都会自动闭合，所以你不需要调用 closePath() 函数。但是调用 stroke() 时不会自动闭合。
+ */
 function draw(ctx: CanvasRenderingContext2D) {
-  ctx.fillStyle = "rgb(200,0,0)";
-  ctx.fillRect(10, 10, 55, 50);
-  ctx.fillStyle = "rgba(0, 0, 200, 0.5)";
-  ctx.fillRect(30, 30, 55, 50);
+  var rectangle = new Path2D();
+  rectangle.rect(10, 10, 50, 50);
+
+  var circle = new Path2D();
+  circle.moveTo(125, 35);
+  circle.arc(100, 35, 25, 0, 2 * Math.PI);
+
+  ctx.stroke(rectangle);
+  ctx.fill(circle);
+  var p = new Path2D("M10 10 h 80 v 80 h -80 Z");
+  console.log(p);
+
+  ctx.stroke(p);
+
 }
 </script>
     
