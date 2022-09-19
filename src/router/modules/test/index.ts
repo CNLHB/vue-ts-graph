@@ -42,6 +42,6 @@ Object.keys(allRoutes).forEach((fileName) => {
     component: component.default || component,
   });
 });
-console.log(routes);
+// console.log(routes);
 
 export default routes;

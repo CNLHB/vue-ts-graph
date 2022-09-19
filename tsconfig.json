@@ -15,7 +15,8 @@
       "DOM",
       "es2019"
     ],
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "noEmit": true // Do not compile the JS (or TS) files in this project on build  
   },
   "include": [
     "src/**/*.ts",
@@ -27,5 +28,6 @@
     {
       "path": "./tsconfig.node.json"
     }
-  ]
+  ],
+  "compileOnSave": false
 }

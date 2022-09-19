@@ -34,6 +34,9 @@ const routes = [{
     text: '文本',
     path: '/test/demoCanvas/9'
 }, {
+    text: '缩放',
+    path: '/test/demoCanvas/10'
+}, {
     text: '运动',
     path: '/test/demoCanvas/16'
 }]
@@ -77,5 +80,10 @@ const pushRoute = (route) => {
 
 .read-the-docs {
     color: #888;
+}
+</style>
+<style>
+canvas {
+    border: 1px solid pink;
 }
 </style>

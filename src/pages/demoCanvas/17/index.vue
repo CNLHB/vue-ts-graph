@@ -21,6 +21,7 @@ const initCanvas = (canvas: HTMLCanvasElement) => {
 let stars = []
 function drawDF(ctx: CanvasRenderingContext2D) {
   class Star {
+[x: string]: any;
     constructor(x, y, vx, vy, r = 4) {
       this.x = x || rand(-100, 600)
       this.y = y || -20 * Math.random()
