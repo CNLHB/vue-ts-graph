@@ -9,6 +9,7 @@ const WILDCARD = '*';
 
 /* event-emitter */
 export default class EventEmitter {
+  constructor(opts = {}) {}
   private _events: EventsType = {};
 
   /**

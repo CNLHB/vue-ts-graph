@@ -22,7 +22,7 @@ const initCanvas = (canvas: HTMLCanvasElement) => {
 function drawDF(ctx: CanvasRenderingContext2D) {
   var raf;
   var running = false;
-
+ 
   var ball = {
     x: 100,
     y: 100,

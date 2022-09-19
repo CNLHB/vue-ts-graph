@@ -6,12 +6,12 @@
 </template>
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import G6 from "@antv/g6/lib/index";
+// import G6 from "@antv/g6/lib/index";
 
 const count = ref(0)
 let canvas: HTMLCanvasElement;
 onMounted(() => {
-  initCanvas()
+  // initCanvas()
 })
 const initCanvas = () => {
   const data = {
