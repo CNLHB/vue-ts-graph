@@ -3,7 +3,7 @@ import { createDom } from './utils';
 export default class Layer {
   level;
   ctx: any;
-  dom: any;
+  dom: HTMLCanvasElement;
   dpr: any;
   constructor(id, painter, dpr) {
     var dom;
@@ -17,5 +17,9 @@ export default class Layer {
   initContext() {
     this.ctx = this.dom.getContext('2d');
     this.ctx.dpr = this.dpr;
+  }
+  refresh() {
+    const ctx: CanvasRenderingContext2D = this.ctx;
+    ctx.fillRect(0, 0, 100, 100);
   }
 }

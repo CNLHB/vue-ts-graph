@@ -5,3 +5,4 @@ export default class Rect extends EventEmitter {
     super(opts);
   }
 }
+ 

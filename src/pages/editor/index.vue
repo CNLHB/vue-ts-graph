@@ -11,7 +11,7 @@ onMounted(()=>{
     graph = new Graph({
         root: document.getElementById('graph_box') as HTMLDivElement
     })
-    console.log('state.graph',graph);
+    console.log('state.graph',graph.refreshImmediately());
     
 })
 

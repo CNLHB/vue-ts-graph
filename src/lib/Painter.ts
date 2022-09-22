@@ -42,6 +42,7 @@ export default class Painter {
   private _height: any;
   private _domRoot: any;
   private _opts: any;
+  private _backgroundColor: any;
   constructor(root, storage, opts) {
     this.type = 'canvas';
     /**
@@ -166,4 +167,28 @@ export default class Painter {
       0
     );
   }
+  refresh() {
+    // var list = this.storage.getDisplayList(true);
+
+    var levelList = this._levelList;
+
+    // this._redrawId = Math.random();
+
+    // this._paintList(list, paintAll, this._redrawId);
+
+    // Paint custum layers
+    for (var i = 0; i < levelList.length; i++) {
+      var z = levelList[i];
+      var layer = this._layers[z];
+      if (layer.refresh) {
+        var clearColor = i === 0 ? this._backgroundColor : null;
+        layer.refresh(clearColor);
+      }
+    }
+
+    this.refreshHover();
+
+    return this;
+  }
+  refreshHover() {}
 }
