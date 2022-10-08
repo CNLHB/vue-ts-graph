@@ -1,65 +1,55 @@
 <script setup lang="ts">
 import { useRouter } from 'vue-router'
 import { ref } from 'vue'
-
+import routesConfig from '../../router/modules/test/index'
+import { cloneDeep } from 'lodash';
 const selRoute = ref('/test/demoCanvas/1')
 
 const router = useRouter()
 
-const routes = [{
-    text: '矩形',
-    path: '/test/demoCanvas/1'
-}, {
-    text: '线',
-    path: '/test/demoCanvas/2'
-}, {
-    text: '圆弧',
-    path: '/test/demoCanvas/3'
-}, {
-    text: '2次贝塞尔曲线',
-    path: '/test/demoCanvas/4'
-}, {
-    text: '3次贝塞尔曲线',
-    path: '/test/demoCanvas/5'
-}, {
-    text: 'path2D',
-    path: '/test/demoCanvas/6'
-}, {
-    text: '颜色',
-    path: '/test/demoCanvas/7'
-}, {
-    text: '图片',
-    path: '/test/demoCanvas/8'
-}, {
-    text: '文本',
-    path: '/test/demoCanvas/9'
-}, {
-    text: '缩放',
-    path: '/test/demoCanvas/10'
-}, {
-    text: '运动',
-    path: '/test/demoCanvas/16'
-}]
+const routes = routesConfig
 const pushRoute = (route) => {
-    router.push(route.path);
+    router.push(`/test/${route.path}`);
     selRoute.value = route.path
 }
 </script>
     
 <template>
-    <div>
-        <div class="container">
+    <div class="vertical_demo">
+        <!-- <div class="container">
             <div v-for="route in routes" :key="route.path" @click="pushRoute(route)"
                 :class="selRoute==route.path?'active':''">
-                {{route.text}}
+                {{route.name.split('/')[1]}}
             </div>
-        </div>
-        <router-view></router-view>
+        </div> -->
+        <el-row class="tac">
+            <el-col :span="6">
+            <el-menu
+                default-active="2"
+                class="el-menu-vertical-demo"
+            >
+                <el-sub-menu :index="`${index+1}`" v-for="(route,index) in routes" :key="route.name">
+                <template #title>
+                    <el-icon><location /></el-icon>
+                    <span>{{route.name}}</span>
+                </template>
+                    <el-menu-item  @click="pushRoute(path)" :index="`${index+1}-${pIndex+1}`" :key="route.path" v-for="(path,pIndex) in route.children">{{path.name.split('/')[1]}}</el-menu-item>
+                </el-sub-menu>
+
+            </el-menu>
+            </el-col>
+            <el-col  :span="16"  :offset="2">
+                <router-view></router-view>
+            </el-col>
+        </el-row>
     </div>
 </template>
     
     
 <style lang="scss" scoped>
+.vertical_demo{
+    padding-top: 50px;
+}
 .container {
     display: flex;
     width: 700px;

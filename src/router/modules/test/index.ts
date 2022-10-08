@@ -26,15 +26,30 @@ const utilFun: any = {};
 const allRoutes: any = import.meta.glob('@/pages/demoCanvas/*/*.vue', {
   eager: true,
 });
-Object.keys(allRoutes).forEach((fileName) => {
+// console.log(Object.keys(allRoutes));
+
+Object.keys(allRoutes).forEach((fileName, index) => {
   const name = fileName
     .replace(/\.\/|\.vue/g, '')
     .replace('/src/pages/', '')
     .replace('/index', '');
   utilFun[name] = allRoutes[fileName].default;
   const component = allRoutes[fileName].default;
-  routes[0].children.push({
-    path: name,
+  const count = Math.floor(index / 10);
+  if (routes[count]) {
+  } else {
+    routes.push({
+      path: '/test',
+      component: test,
+      children: [],
+      name: `test${count}`,
+      meta: {
+        title: `test${count}`,
+      },
+    });
+  }
+  routes[count].children.push({
+    path: name.split('.')[0],
     name: name,
     meta: {
       title: name,

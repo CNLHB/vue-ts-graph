@@ -5,8 +5,9 @@ import path from 'path';
 import { log } from 'console';
 // log(requireTransform.default);
 // 配置element-plus
-// import Components from 'unplugin-vue-components/vite'
-// import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
+import AutoImport from 'unplugin-auto-import/vite';
+import Components from 'unplugin-vue-components/vite';
+import { ElementPlusResolver } from 'unplugin-vue-components/resolvers';
 // https://vitejs.dev/config/
 console.log(path.resolve(__dirname, './src'));
 export default defineConfig({
@@ -15,9 +16,12 @@ export default defineConfig({
     // requireTransform.default({
     //   fileRegex: /.js$|.vue$/,
     // }),
-    // Components({
-    // resolvers: [ElementPlusResolver()],
-    // })
+    AutoImport({
+      resolvers: [ElementPlusResolver()],
+    }),
+    Components({
+      resolvers: [ElementPlusResolver()],
+    }),
   ],
   resolve: {
     alias: {
